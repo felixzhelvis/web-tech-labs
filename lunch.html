@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Собрать ланч — МосЛанч</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/lunch.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <h1 class="logo">МосЛанч</h1>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="lunch.html" class="nav-link active">Собрать ланч</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- 1. Секция «Супы» -->
+            <section class="section dishes-section">
+                <h2 class="section-title">Супы</h2>
+                <div class="dishes-grid">
+                    <div class="dish-card">
+                        <img src="images/gaspacho.jpg" alt="Томатный суп Гаспачо">
+                        <p class="dish-price">195 &#8381;</p>
+                        <p class="dish-name">Томатный крем-суп Гаспачо с базиликом</p>
+                        <p class="dish-count">350 г</p>
+                        <button type="button">Добавить</button>
+                    </div>
+                    <div class="dish-card">
+                        <img src="images/mushroom_soup.jpg" alt="Грибной суп-пюре">
+                        <p class="dish-price">185 &#8381;</p>
+                        <p class="dish-name">Грибной суп-пюре с сухариками</p>
+                        <p class="dish-count">330 г</p>
+                        <button type="button">Добавить</button>
+                    </div>
+                    <div class="dish-card">
+                        <img src="images/norwegian_soup.jpg" alt="Норвежский рыбный суп">
+                        <p class="dish-price">270 &#8381;</p>
+                        <p class="dish-name">Норвежский суп со сливочным лососем</p>
+                        <p class="dish-count">340 г</p>
+                        <button type="button">Добавить</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Секция «Главные блюда» -->
+            <section class="section dishes-section">
+                <h2 class="section-title">Главные блюда</h2>
+                <div class="dishes-grid">
+                    <div class="dish-card">
+                        <img src="images/fried_potatoes.jpg" alt="Жареный картофель с грибами">
+                        <p class="dish-price">150 &#8381;</p>
+                        <p class="dish-name">Жареный картофель с лесными грибами</p>
+                        <p class="dish-count">250 г</p>
+                        <button type="button">Добавить</button>
+                    </div>
+                    <div class="dish-card">
+                        <img src="images/lasagna.jpg" alt="Лазанья мясная">
+                        <p class="dish-price">385 &#8381;</p>
+                        <!-- Длинное название на 2 строки для проверки выравнивания кнопок через margin-top: auto -->
+                        <p class="dish-name">Лазанья мясная с пармезаном и соусом бешамель под хрустящей корочкой</p>
+                        <p class="dish-count">310 г</p>
+                        <button type="button">Добавить</button>
+                    </div>
+                    <div class="dish-card">
+                        <img src="images/chicken_cutlet.jpg" alt="Котлета по-киевски">
+                        <p class="dish-price">320 &#8381;</p>
+                        <p class="dish-name">Котлета по-киевски с картофельным пюре</p>
+                        <p class="dish-count">280 г</p>
+                        <button type="button">Добавить</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Секция «Напитки» -->
+            <section class="section dishes-section">
+                <h2 class="section-title">Напитки</h2>
+                <div class="dishes-grid">
+                    <div class="dish-card">
+                        <img src="images/orange_juice.jpg" alt="Апельсиновый сок">
+                        <p class="dish-price">120 &#8381;</p>
+                        <p class="dish-name">Свежевыжатый апельсиновый сок</p>
+                        <p class="dish-count">300 мл</p>
+                        <button type="button">Добавить</button>
+                    </div>
+                    <div class="dish-card">
+                        <img src="images/apple_juice.jpg" alt="Яблочный сок">
+                        <p class="dish-price">90 &#8381;</p>
+                        <p class="dish-name">Натуральный яблочный сок прямого отжима</p>
+                        <p class="dish-count">300 мл</p>
+                        <button type="button">Добавить</button>
+                    </div>
+                    <div class="dish-card">
+                        <img src="images/carrot_juice.jpg" alt="Морковный сок">
+                        <p class="dish-price">110 &#8381;</p>
+                        <p class="dish-name">Свежевыжатый морковный сок со сливками</p>
+                        <p class="dish-count">300 мл</p>
+                        <button type="button">Добавить</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer" id="contacts">
+        <div class="container footer-container">
+            <h2 class="footer-title">Контакты</h2>
+            <p class="footer-desc">Служба заботы о клиентах и приём заказов:</p>
+            <p class="footer-contact">
+                Телефон: <a href="tel:+74951234567" class="footer-link">+7 (495) 123-45-67</a>
+            </p>
+            <p class="footer-contact">
+                Электронная почта: <a href="mailto:info@moslunch.ru" class="footer-link">info@moslunch.ru</a>
+            </p>
+            <p class="footer-address">
+                Адрес кухни и офиса: г. Москва, ул. Большая Семёновская, д. 38
+            </p>
+            <p class="footer-copyright">
+                &copy; 2026 МосЛанч. Все права защищены. Доставка горячих бизнес-ланчей по Москве.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,103 @@
+/* Стили страницы «Собрать ланч» (ЛР 2) */
+
+/* Сетка карточек блюд (селектор section > div и .dishes-grid) */
+.dishes-grid,
+section > .dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Карточка блюда (селектор section > div > div и .dish-card) */
+.dish-card,
+section > div > .dish-card {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 40px;
+    border-radius: 35px;
+    cursor: pointer;
+    filter: drop-shadow(17px 19px 24px rgba(0, 0, 0, 0.13));
+    background-color: #ffffff;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease, filter 0.2s ease;
+}
+
+/* Рамка при наведении на карточку */
+.dish-card:hover {
+    border: 2px solid tomato;
+}
+
+/* Изображение блюда */
+.dish-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 35px;
+    margin-bottom: 20px;
+}
+
+/* Цена блюда (увеличенный шрифт) */
+.dish-price {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 8px;
+}
+
+/* Название блюда (увеличенный шрифт) */
+.dish-name {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: #222222;
+    margin-bottom: 15px;
+}
+
+/* Вес/объем блюда (серый цвет, прижатие к низу карточки) */
+.dish-count {
+    font-size: 15px;
+    color: #888888;
+    margin-top: auto;
+    margin-bottom: 15px;
+}
+
+/* Кнопка «Добавить» */
+.dish-card button {
+    background-color: #f1eee9;
+    padding: 10px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333333;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    width: 100%;
+}
+
+/* Контекстный селектор: изменение фона кнопки при наведении на карточку */
+.dish-card:hover button {
+    background-color: #e0ded9;
+}
+
+/* Медиазапросы для страницы сборки ланча */
+@media (max-width: 800px) {
+    .dishes-grid,
+    section > .dishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .dishes-grid,
+    section > .dishes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dish-card,
+    section > div > .dish-card {
+        padding: 25px 20px;
+    }
+}

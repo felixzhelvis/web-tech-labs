@@ -1,0 +1,24 @@
+# Environment and credentials
+.env
+.env.*
+!.env.example
+.agent/mcp_config.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dependencies and build outputs
+node_modules/
+dist/
+.netlify/
+
+# Editor files
+.vscode/
+.idea/
+labs/
+
+# AI Agent and internal docs
+.agent/
+docs/
+

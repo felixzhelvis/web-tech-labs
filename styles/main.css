@@ -1,11 +1,9 @@
-/* Базовый сброс и универсальный селектор */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* Sticky footer через flex-контейнер на весь viewport */
 body {
     display: flex;
     flex-direction: column;
@@ -18,7 +16,6 @@ body {
     line-height: 1.6;
 }
 
-/* Общий контейнер для центрирования контента */
 .container {
     width: 100%;
     max-width: 1100px;
@@ -26,7 +23,6 @@ body {
     padding: 0 20px;
 }
 
-/* Стили шапки и навигации */
 .header {
     background-color: #ffffff;
     border-bottom: 1px solid #e0e0e0;
@@ -81,7 +77,6 @@ body {
     font-weight: 600;
 }
 
-/* Основной блок страницы: flex: 1 прижимает footer к низу экрана */
 .main {
     flex: 1;
     margin: 0 0 50px 0;
@@ -113,7 +108,6 @@ body {
     background-color: tomato;
 }
 
-/* 1. Секция «О компании» */
 .about-content {
     display: flex;
     gap: 30px;
@@ -147,7 +141,6 @@ body {
     text-align: justify;
 }
 
-/* 2. Секция «Преимущества» */
 .advantages-box {
     background-color: #fafafa;
     border: 1px solid #eeeeee;
@@ -176,7 +169,6 @@ body {
     color: #111111;
 }
 
-/* 3. Секция «Популярные блюда» и таблица */
 .table-wrapper {
     overflow-x: auto;
     margin: 20px 0;
@@ -225,7 +217,6 @@ body {
     color: tomato;
 }
 
-/* Подвал сайта (footer) */
 .footer {
     background-color: black;
     color: white;
@@ -294,7 +285,6 @@ body {
     color: tomato;
 }
 
-/* Медиазапросы (@media) для адаптивности */
 @media (max-width: 800px) {
     .nav {
         justify-content: space-between;
@@ -326,7 +316,7 @@ body {
     }
 
     .nav-link {
-        font-size: 20px; /* Размер шрифта ссылок увеличен на +4px (было 16px) */
+        font-size: 20px; 
     }
 
     .about-content {
@@ -340,7 +330,7 @@ body {
 
     .popular-table th,
     .popular-table td {
-        font-size: 13px; /* Размер шрифта таблицы уменьшен на -2px (было 15px) */
+        font-size: 13px; 
         padding: 10px 8px;
     }
 }
@@ -348,7 +338,7 @@ body {
 @media (max-width: 400px) {
     .popular-table th,
     .popular-table td {
-        font-size: 11px; /* Шрифт таблицы ещё уменьшен на -2px для предотвращения скролла */
+        font-size: 11px; 
         padding: 8px 4px;
     }
 

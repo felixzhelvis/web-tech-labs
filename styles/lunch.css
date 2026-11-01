@@ -1,6 +1,3 @@
-/* Стили страницы «Собрать ланч» (ЛР 2 и ЛР 3) */
-
-/* Сетка карточек блюд (селектор section > div и .dishes-grid) */
 .dishes-grid,
 section > .dishes-grid {
     display: grid;
@@ -9,7 +6,6 @@ section > .dishes-grid {
     margin-top: 20px;
 }
 
-/* Карточка блюда (селектор section > div > div и .dish-card) */
 .dish-card,
 section > div > .dish-card {
     display: flex;
@@ -23,12 +19,18 @@ section > div > .dish-card {
     transition: border-color 0.2s ease, filter 0.2s ease;
 }
 
-/* Рамка при наведении на карточку */
 .dish-card:hover {
     border: 2px solid tomato;
 }
 
-/* Изображение блюда */
+.dish-card.selected {
+    border: 2px solid tomato;
+}
+
+.dish-card.selected button {
+    background-color: #e0ded9;
+}
+
 .dish-card img {
     width: 100%;
     height: 220px;
@@ -37,7 +39,6 @@ section > div > .dish-card {
     margin-bottom: 20px;
 }
 
-/* Цена блюда (увеличенный шрифт) */
 .dish-price {
     font-size: 22px;
     font-weight: 700;
@@ -45,7 +46,6 @@ section > div > .dish-card {
     margin-bottom: 8px;
 }
 
-/* Название блюда (увеличенный шрифт) */
 .dish-name {
     font-size: 18px;
     font-weight: 600;
@@ -54,7 +54,6 @@ section > div > .dish-card {
     margin-bottom: 15px;
 }
 
-/* Вес/объем блюда (серый цвет, прижатие к низу карточки) */
 .dish-count {
     font-size: 15px;
     color: #888888;
@@ -62,7 +61,6 @@ section > div > .dish-card {
     margin-bottom: 15px;
 }
 
-/* Кнопка «Добавить» */
 .dish-card button {
     background-color: #f1eee9;
     padding: 10px 30px;
@@ -77,14 +75,9 @@ section > div > .dish-card {
     width: 100%;
 }
 
-/* Контекстный селектор: изменение фона кнопки при наведении на карточку */
 .dish-card:hover button {
     background-color: #e0ded9;
 }
-
-/* ==========================================================================
-   Стили формы заказа (ЛР 3)
-   ========================================================================== */
 
 .order-section {
     margin-bottom: 60px;
@@ -114,6 +107,59 @@ section > div > .dish-card {
     border-bottom: 1px solid #e0e0e0;
 }
 
+.hidden {
+    display: none !important;
+}
+
+.order-empty-message {
+    font-size: 15px;
+    color: #777777;
+    margin: 10px 0 15px 0;
+}
+
+.order-item {
+    margin-bottom: 14px;
+}
+
+.order-item-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 4px;
+}
+
+.order-item-text {
+    font-size: 15px;
+    color: #333333;
+}
+
+.order-item-text.not-selected {
+    font-style: italic;
+    color: #888888;
+}
+
+.order-total {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #dddddd;
+}
+
+.order-total-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 6px;
+}
+
+.order-total-price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: tomato;
+}
+
 .form-group {
     display: flex;
     flex-direction: column;
@@ -127,7 +173,6 @@ section > div > .dish-card {
     color: #333333;
 }
 
-/* Стили полей ввода, селектов и текста */
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="tel"],
@@ -158,7 +203,6 @@ section > div > .dish-card {
     box-shadow: 0 0 0 2px rgba(255, 99, 71, 0.15);
 }
 
-/* Чекбокс рассылки */
 .form-group-checkbox {
     flex-direction: row;
     align-items: center;
@@ -179,7 +223,6 @@ section > div > .dish-card {
     cursor: pointer;
 }
 
-/* Время доставки (fieldset + legend) */
 .delivery-time-fieldset {
     border: 1px solid #cccccc;
     border-radius: 10px;
@@ -218,7 +261,6 @@ section > div > .dish-card {
     cursor: pointer;
 }
 
-/* Кнопки формы */
 .form-buttons {
     display: flex;
     gap: 15px;
@@ -256,10 +298,6 @@ section > div > .dish-card {
 .btn-submit:hover {
     background-color: #e5533d;
 }
-
-/* ==========================================================================
-   Медиазапросы для адаптивности
-   ========================================================================== */
 
 @media (max-width: 800px) {
     .dishes-grid,

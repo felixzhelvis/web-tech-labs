@@ -24,131 +24,57 @@
 
     <main class="main">
         <div class="container">
-            <!-- 1. Секция «Супы» -->
-            <section class="section dishes-section">
+            <section class="section dishes-section" data-category="soup">
                 <h2 class="section-title">Супы</h2>
-                <div class="dishes-grid">
-                    <div class="dish-card">
-                        <img src="images/gaspacho.jpg" alt="Томатный суп Гаспачо">
-                        <p class="dish-price">195 &#8381;</p>
-                        <p class="dish-name">Томатный крем-суп Гаспачо с базиликом</p>
-                        <p class="dish-count">350 г</p>
-                        <button type="button">Добавить</button>
-                    </div>
-                    <div class="dish-card">
-                        <img src="images/mushroom_soup.jpg" alt="Грибной суп-пюре">
-                        <p class="dish-price">185 &#8381;</p>
-                        <p class="dish-name">Грибной суп-пюре с сухариками</p>
-                        <p class="dish-count">330 г</p>
-                        <button type="button">Добавить</button>
-                    </div>
-                    <div class="dish-card">
-                        <img src="images/norwegian_soup.jpg" alt="Норвежский рыбный суп">
-                        <p class="dish-price">270 &#8381;</p>
-                        <p class="dish-name">Норвежский суп со сливочным лососем</p>
-                        <p class="dish-count">340 г</p>
-                        <button type="button">Добавить</button>
-                    </div>
-                </div>
+                <div class="dishes-grid"></div>
             </section>
 
-            <!-- 2. Секция «Главные блюда» -->
-            <section class="section dishes-section">
+            <section class="section dishes-section" data-category="main-course">
                 <h2 class="section-title">Главные блюда</h2>
-                <div class="dishes-grid">
-                    <div class="dish-card">
-                        <img src="images/fried_potatoes.jpg" alt="Жареный картофель с грибами">
-                        <p class="dish-price">150 &#8381;</p>
-                        <p class="dish-name">Жареный картофель с лесными грибами</p>
-                        <p class="dish-count">250 г</p>
-                        <button type="button">Добавить</button>
-                    </div>
-                    <div class="dish-card">
-                        <img src="images/lasagna.jpg" alt="Лазанья мясная">
-                        <p class="dish-price">385 &#8381;</p>
-                        <!-- Длинное название на 2 строки для проверки выравнивания кнопок через margin-top: auto -->
-                        <p class="dish-name">Лазанья мясная с пармезаном и соусом бешамель под хрустящей корочкой</p>
-                        <p class="dish-count">310 г</p>
-                        <button type="button">Добавить</button>
-                    </div>
-                    <div class="dish-card">
-                        <img src="images/chicken_cutlet.jpg" alt="Котлета по-киевски">
-                        <p class="dish-price">320 &#8381;</p>
-                        <p class="dish-name">Котлета по-киевски с картофельным пюре</p>
-                        <p class="dish-count">280 г</p>
-                        <button type="button">Добавить</button>
-                    </div>
-                </div>
+                <div class="dishes-grid"></div>
             </section>
 
-            <!-- 3. Секция «Напитки» -->
-            <section class="section dishes-section">
+            <section class="section dishes-section" data-category="drink">
                 <h2 class="section-title">Напитки</h2>
-                <div class="dishes-grid">
-                    <div class="dish-card">
-                        <img src="images/orange_juice.jpg" alt="Апельсиновый сок">
-                        <p class="dish-price">120 &#8381;</p>
-                        <p class="dish-name">Свежевыжатый апельсиновый сок</p>
-                        <p class="dish-count">300 мл</p>
-                        <button type="button">Добавить</button>
-                    </div>
-                    <div class="dish-card">
-                        <img src="images/apple_juice.jpg" alt="Яблочный сок">
-                        <p class="dish-price">90 &#8381;</p>
-                        <p class="dish-name">Натуральный яблочный сок прямого отжима</p>
-                        <p class="dish-count">300 мл</p>
-                        <button type="button">Добавить</button>
-                    </div>
-                    <div class="dish-card">
-                        <img src="images/carrot_juice.jpg" alt="Морковный сок">
-                        <p class="dish-price">110 &#8381;</p>
-                        <p class="dish-name">Свежевыжатый морковный сок со сливками</p>
-                        <p class="dish-count">300 мл</p>
-                        <button type="button">Добавить</button>
-                    </div>
-                </div>
+                <div class="dishes-grid"></div>
             </section>
         </div>
     </main>
 
-    <!-- Секция формы заказа (ЛР 3) -->
     <section class="order-section">
         <div class="container">
             <h2 class="section-title">Сделать заказ</h2>
             <form action="https://httpbin.org/post" method="POST" class="order-form">
-                <!-- Колонка 1: Состав заказа клиента -->
                 <div class="order-column">
                     <h3 class="form-column-title">Ваш заказ</h3>
 
-                    <div class="form-group">
-                        <label for="soup-select">Выберите суп</label>
-                        <select name="soup" id="soup-select" required>
-                            <option value="">Выберите суп</option>
-                            <option value="gaspacho">Томатный крем-суп Гаспачо с базиликом (195 &#8381;)</option>
-                            <option value="mushroom_soup">Грибной суп-пюре с сухариками (185 &#8381;)</option>
-                            <option value="norwegian_soup">Норвежский суп со сливочным лососем (270 &#8381;)</option>
-                        </select>
+                    <p class="order-empty-message" id="order-empty">Ничего не выбрано</p>
+
+                    <div class="order-details hidden" id="order-details">
+                        <div class="order-item">
+                            <h4 class="order-item-title">Суп</h4>
+                            <p class="order-item-text not-selected" id="order-soup-text">Блюдо не выбрано</p>
+                        </div>
+
+                        <div class="order-item">
+                            <h4 class="order-item-title">Главное блюдо</h4>
+                            <p class="order-item-text not-selected" id="order-main-course-text">Блюдо не выбрано</p>
+                        </div>
+
+                        <div class="order-item">
+                            <h4 class="order-item-title">Напиток</h4>
+                            <p class="order-item-text not-selected" id="order-drink-text">Напиток не выбран</p>
+                        </div>
+
+                        <div class="order-total" id="order-total">
+                            <h4 class="order-total-title">Стоимость заказа</h4>
+                            <p class="order-total-price" id="order-total-price">0 &#8381;</p>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="main-course-select">Выберите главное блюдо</label>
-                        <select name="main_course" id="main-course-select" required>
-                            <option value="">Выберите главное блюдо</option>
-                            <option value="fried_potatoes">Жареный картофель с лесными грибами (150 &#8381;)</option>
-                            <option value="lasagna">Лазанья мясная с пармезаном (385 &#8381;)</option>
-                            <option value="chicken_cutlet">Котлета по-киевски с картофельным пюре (320 &#8381;)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="drink-select">Выберите напиток</label>
-                        <select name="drink" id="drink-select" required>
-                            <option value="">Выберите напиток</option>
-                            <option value="orange_juice">Свежевыжатый апельсиновый сок (120 &#8381;)</option>
-                            <option value="apple_juice">Натуральный яблочный сок прямого отжима (90 &#8381;)</option>
-                            <option value="carrot_juice">Свежевыжатый морковный сок со сливками (110 &#8381;)</option>
-                        </select>
-                    </div>
+                    <input type="hidden" name="soup" id="hidden-soup" value="">
+                    <input type="hidden" name="main_course" id="hidden-main-course" value="">
+                    <input type="hidden" name="drink" id="hidden-drink" value="">
 
                     <div class="form-group">
                         <label for="comment">Комментарии к заказу</label>
@@ -156,7 +82,6 @@
                     </div>
                 </div>
 
-                <!-- Колонка 2: Данные для доставки -->
                 <div class="order-column">
                     <h3 class="form-column-title">Данные для доставки</h3>
 
@@ -229,5 +154,8 @@
             </p>
         </div>
     </footer>
+
+    <script src="scripts/dishes.js"></script>
+    <script src="scripts/order.js"></script>
 </body>
 </html>

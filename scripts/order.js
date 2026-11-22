@@ -216,9 +216,97 @@ function setupFormReset() {
     });
 }
 
+function getOrderValidationMessage() {
+    const soup = Boolean(selectedDishes.soup);
+    const main = Boolean(selectedDishes['main-course']);
+    const salad = Boolean(selectedDishes.salad);
+    const drink = Boolean(selectedDishes.drink);
+    const dessert = Boolean(selectedDishes.dessert);
+
+    if (!soup && !main && !salad && !drink && !dessert) {
+        return 'Ничего не выбрано. Выберите блюда для заказа';
+    }
+
+    const isValidFood = (soup && main && salad) ||
+                        (soup && main && !salad) ||
+                        (soup && !main && salad) ||
+                        (!soup && main && salad) ||
+                        (!soup && main && !salad);
+
+    if (isValidFood && !drink) {
+        return 'Выберите напиток';
+    }
+
+    if (soup && !main && !salad) {
+        return 'Выберите главное блюдо/салат/стартер';
+    }
+
+    if (salad && !soup && !main) {
+        return 'Выберите суп или главное блюдо';
+    }
+
+    if (!soup && !main && !salad && (drink || dessert)) {
+        return 'Выберите главное блюдо';
+    }
+
+    return null;
+}
+
+function showNotification(message) {
+    const existingModal = document.querySelector('.modal-overlay');
+    if (existingModal) {
+        existingModal.remove();
+    }
+
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+
+    const modal = document.createElement('div');
+    modal.className = 'modal-window';
+
+    const text = document.createElement('p');
+    text.className = 'modal-message';
+    text.textContent = message;
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'modal-btn';
+    btn.textContent = 'Окей';
+
+    btn.addEventListener('click', () => {
+        overlay.remove();
+    });
+
+    overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) {
+            overlay.remove();
+        }
+    });
+
+    modal.appendChild(text);
+    modal.appendChild(btn);
+    overlay.appendChild(modal);
+
+    document.body.appendChild(overlay);
+}
+
+function setupOrderValidation() {
+    const orderForm = document.querySelector('.order-form');
+    if (!orderForm) return;
+
+    orderForm.addEventListener('submit', (event) => {
+        const message = getOrderValidationMessage();
+        if (message) {
+            event.preventDefault();
+            showNotification(message);
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     renderDishes();
     setupFilters();
     updateOrderSummary();
     setupFormReset();
+    setupOrderValidation();
 });

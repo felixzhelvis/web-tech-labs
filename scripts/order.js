@@ -20,7 +20,7 @@ const categories = ['soup', 'main-course', 'salad', 'drink', 'dessert'];
 
 async function loadDishes() {
     try {
-        const response = await fetch('https://edu.std-900.ist.mospolytech.ru/labs/api/dishes');
+        const response = await fetch('https://cdn.jsdelivr.net/gh/felixzhelvis/web-tech-labs@main/dishes.json');
         if (!response.ok) {
             throw new Error('API error');
         }

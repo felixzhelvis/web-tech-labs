@@ -1,3 +1,5 @@
+let dishes = [];
+
 const selectedDishes = {
     soup: null,
     'main-course': null,
@@ -15,6 +17,28 @@ const activeFilters = {
 };
 
 const categories = ['soup', 'main-course', 'salad', 'drink', 'dessert'];
+
+async function loadDishes() {
+    try {
+        const response = await fetch('https://edu.std-900.ist.mospolytech.ru/labs/api/dishes');
+        if (!response.ok) {
+            throw new Error('API error');
+        }
+        dishes = await response.json();
+    } catch (error) {
+        try {
+            const fallbackResponse = await fetch('dishes.json');
+            if (!fallbackResponse.ok) {
+                throw new Error('Fallback error');
+            }
+            dishes = await fallbackResponse.json();
+        } catch (fallbackError) {
+            dishes = [];
+        }
+    }
+    renderDishes();
+    updateOrderSummary();
+}
 
 function renderCategoryDishes(category) {
     const container = document.querySelector(`[data-category="${category}"] .dishes-grid`);
@@ -304,9 +328,8 @@ function setupOrderValidation() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderDishes();
+    loadDishes();
     setupFilters();
-    updateOrderSummary();
     setupFormReset();
     setupOrderValidation();
 });

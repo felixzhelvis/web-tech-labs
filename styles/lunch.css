@@ -524,3 +524,50 @@ section > div > .dish-card {
         flex-direction: column;
     }
 }
+.checkout-panel {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    padding: 12px 0;
+    border-top: 1px solid #e0e0e0;
+    background-color: #ffffff;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.checkout-panel-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+}
+
+.checkout-link {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 10px;
+    background-color: tomato;
+    color: #111111;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.checkout-link[href]:hover {
+    background-color: #e5533d;
+}
+
+.checkout-link[aria-disabled="true"],
+.btn-submit:disabled,
+#cart-dishes button:disabled {
+    background-color: #eeeeee;
+    color: #555555;
+    cursor: not-allowed;
+}
+
+#cart-dishes .dish-card {
+    cursor: default;
+}
+
+#cart-empty a {
+    color: inherit;
+}

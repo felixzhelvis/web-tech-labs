@@ -17,6 +17,7 @@
             <nav class="nav">
                 <a href="index.html" class="nav-link">Главная</a>
                 <a href="lunch.html" class="nav-link active">Собрать ланч</a>
+                <a href="order.html" class="nav-link">Оформить заказ</a>
                 <a href="#contacts" class="nav-link">Контакты</a>
             </nav>
         </div>
@@ -189,6 +190,8 @@
                 </div>
             </section>
 
+            <p class="order-empty-message" id="catalog-status" role="status">Загрузка меню…</p>
+
             <section class="section dishes-section" data-category="soup">
                 <h2 class="section-title">Супы</h2>
                 <div class="filters">
@@ -240,112 +243,12 @@
         </div>
     </main>
 
-    <section class="order-section">
-        <div class="container">
-            <h2 class="section-title">Сделать заказ</h2>
-            <form action="https://httpbin.org/post" method="POST" class="order-form">
-                <div class="order-column">
-                    <h3 class="form-column-title">Ваш заказ</h3>
-
-                    <p class="order-empty-message" id="order-empty">Ничего не выбрано</p>
-
-                    <div class="order-details hidden" id="order-details">
-                        <div class="order-item">
-                            <h4 class="order-item-title">Суп</h4>
-                            <p class="order-item-text not-selected" id="order-soup-text">Блюдо не выбрано</p>
-                        </div>
-
-                        <div class="order-item">
-                            <h4 class="order-item-title">Главное блюдо</h4>
-                            <p class="order-item-text not-selected" id="order-main-course-text">Блюдо не выбрано</p>
-                        </div>
-
-                        <div class="order-item">
-                            <h4 class="order-item-title">Салат или стартер</h4>
-                            <p class="order-item-text not-selected" id="order-salad-text">Блюдо не выбрано</p>
-                        </div>
-
-                        <div class="order-item">
-                            <h4 class="order-item-title">Напиток</h4>
-                            <p class="order-item-text not-selected" id="order-drink-text">Напиток не выбран</p>
-                        </div>
-
-                        <div class="order-item">
-                            <h4 class="order-item-title">Десерт</h4>
-                            <p class="order-item-text not-selected" id="order-dessert-text">Десерт не выбран</p>
-                        </div>
-
-                        <div class="order-total" id="order-total">
-                            <h4 class="order-total-title">Стоимость заказа</h4>
-                            <p class="order-total-price" id="order-total-price">0 &#8381;</p>
-                        </div>
-                    </div>
-
-                    <input type="hidden" name="soup" id="hidden-soup" value="">
-                    <input type="hidden" name="main_course" id="hidden-main-course" value="">
-                    <input type="hidden" name="salad" id="hidden-salad" value="">
-                    <input type="hidden" name="drink" id="hidden-drink" value="">
-                    <input type="hidden" name="dessert" id="hidden-dessert" value="">
-
-                    <div class="form-group">
-                        <label for="comment">Комментарии к заказу</label>
-                        <textarea name="comment" id="comment" rows="4" placeholder="Укажите особые пожелания к заказу, номер подъезда или код домофона"></textarea>
-                    </div>
-                </div>
-
-                <div class="order-column">
-                    <h3 class="form-column-title">Данные для доставки</h3>
-
-                    <div class="form-group">
-                        <label for="full_name">Ваше имя</label>
-                        <input type="text" name="full_name" id="full_name" placeholder="Иван Иванов" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Электронная почта</label>
-                        <input type="email" name="email" id="email" placeholder="example@mail.ru" required>
-                    </div>
-
-                    <div class="form-group form-group-checkbox">
-                        <input type="checkbox" name="subscribe" id="subscribe" checked>
-                        <label for="subscribe">Получать спецпредложения и новости по почте</label>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Номер телефона</label>
-                        <input type="tel" name="phone" id="phone" placeholder="+7 (___) ___-__-__" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="delivery_address">Адрес доставки</label>
-                        <input type="text" name="delivery_address" id="delivery_address" placeholder="г. Москва, ул. Большая Семёновская, д. 38, кв. 1" required>
-                    </div>
-
-                    <fieldset class="delivery-time-fieldset">
-                        <legend>Время доставки:</legend>
-                        <div class="radio-option">
-                            <input type="radio" name="delivery_type" id="delivery-now" value="now" checked required>
-                            <label for="delivery-now">Как можно скорее</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" name="delivery_type" id="delivery-by-time" value="by_time" required>
-                            <label for="delivery-by-time">К указанному времени</label>
-                        </div>
-                    </fieldset>
-
-                    <div class="form-group">
-                        <label for="delivery_time">Укажите время доставки</label>
-                        <input type="time" name="delivery_time" id="delivery_time" min="07:00" max="23:00" step="300">
-                    </div>
-
-                    <div class="form-buttons">
-                        <button type="reset" class="btn-reset">Сбросить</button>
-                        <button type="submit" class="btn-submit">Отправить</button>
-                    </div>
-                </div>
-            </form>
+    <aside class="checkout-panel hidden" id="checkout-panel" aria-label="Текущий заказ">
+        <div class="container checkout-panel-content">
+            <p aria-live="polite">Стоимость заказа: <strong id="checkout-total">0 &#8381;</strong></p>
+            <a class="checkout-link" id="checkout-link" role="link" aria-disabled="true">Перейти к оформлению</a>
         </div>
-    </section>
+    </aside>
 
     <footer class="footer" id="contacts">
         <div class="container footer-container">

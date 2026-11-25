@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформить заказ — МосЛанч</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/lunch.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <h1 class="logo">МосЛанч</h1>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="lunch.html" class="nav-link">Собрать ланч</a>
+                <a href="order.html" class="nav-link active" aria-current="page">Оформить заказ</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Состав заказа</h2>
+                <p class="order-empty-message" id="catalog-status" role="status">Загрузка заказа…</p>
+                <p class="order-empty-message hidden" id="cart-empty">
+                    Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу
+                    <a href="lunch.html">Собрать ланч</a>.
+                </p>
+                <div class="dishes-grid" id="cart-dishes"></div>
+            </div>
+        </section>
+
+        <section class="order-section">
+            <div class="container">
+                <h2 class="section-title">Оформление заказа</h2>
+                <form name="moslunch-order" action="/" method="post" data-netlify="true" class="order-form">
+                    <input type="hidden" name="form-name" value="moslunch-order">
+                    <div class="order-column">
+                        <h3 class="form-column-title">Ваш заказ</h3>
+
+                        <div class="order-details">
+                            <div class="order-item">
+                                <h4 class="order-item-title">Суп</h4>
+                                <p class="order-item-text not-selected" id="order-soup-text">Не выбран</p>
+                            </div>
+
+                            <div class="order-item">
+                                <h4 class="order-item-title">Главное блюдо</h4>
+                                <p class="order-item-text not-selected" id="order-main-course-text">Не выбрано</p>
+                            </div>
+
+                            <div class="order-item">
+                                <h4 class="order-item-title">Салат или стартер</h4>
+                                <p class="order-item-text not-selected" id="order-salad-text">Не выбран</p>
+                            </div>
+
+                            <div class="order-item">
+                                <h4 class="order-item-title">Напиток</h4>
+                                <p class="order-item-text not-selected" id="order-drink-text">Не выбран</p>
+                            </div>
+
+                            <div class="order-item">
+                                <h4 class="order-item-title">Десерт</h4>
+                                <p class="order-item-text not-selected" id="order-dessert-text">Не выбран</p>
+                            </div>
+
+                            <div class="order-total" id="order-total">
+                                <h4 class="order-total-title">Стоимость заказа</h4>
+                                <p class="order-total-price" id="order-total-price">0 &#8381;</p>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="soup_id" id="hidden-soup" value="">
+                        <input type="hidden" name="main_course_id" id="hidden-main-course" value="">
+                        <input type="hidden" name="salad_id" id="hidden-salad" value="">
+                        <input type="hidden" name="drink_id" id="hidden-drink" value="">
+                        <input type="hidden" name="dessert_id" id="hidden-dessert" value="">
+
+                        <div class="form-group">
+                            <label for="comment">Комментарии к заказу</label>
+                            <textarea name="comment" id="comment" rows="4" placeholder="Укажите особые пожелания к заказу, номер подъезда или код домофона"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="order-column">
+                        <h3 class="form-column-title">Данные для доставки</h3>
+
+                        <div class="form-group">
+                            <label for="full_name">Ваше имя</label>
+                            <input type="text" name="full_name" id="full_name" placeholder="Иван Иванов" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Электронная почта</label>
+                            <input type="email" name="email" id="email" placeholder="example@mail.ru" required>
+                        </div>
+
+                        <div class="form-group form-group-checkbox">
+                            <input type="checkbox" name="subscribe" id="subscribe" value="1" checked>
+                            <label for="subscribe">Получать спецпредложения и новости по почте</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Номер телефона</label>
+                            <input type="tel" name="phone" id="phone" placeholder="+7 (___) ___-__-__" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="delivery_address">Адрес доставки</label>
+                            <input type="text" name="delivery_address" id="delivery_address" placeholder="г. Москва, ул. Большая Семёновская, д. 38, кв. 1" required>
+                        </div>
+
+                        <fieldset class="delivery-time-fieldset">
+                            <legend>Время доставки:</legend>
+                            <div class="radio-option">
+                                <input type="radio" name="delivery_type" id="delivery-now" value="now" checked required>
+                                <label for="delivery-now">Как можно скорее</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="delivery_type" id="delivery-by-time" value="by_time" required>
+                                <label for="delivery-by-time">К указанному времени</label>
+                            </div>
+                        </fieldset>
+
+                        <div class="form-group">
+                            <label for="delivery_time">Укажите время доставки</label>
+                            <input type="time" name="delivery_time" id="delivery_time" min="07:00" max="23:00" step="300">
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="reset" class="btn-reset">Сбросить</button>
+                            <button type="submit" class="btn-submit" disabled>Отправить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contacts">
+        <div class="container footer-container">
+            <h2 class="footer-title">Контакты</h2>
+            <p class="footer-desc">Служба заботы о клиентах и приём заказов:</p>
+            <p class="footer-contact">
+                Телефон: <a href="tel:+74951234567" class="footer-link">+7 (495) 123-45-67</a>
+            </p>
+            <p class="footer-contact">
+                Электронная почта: <a href="mailto:info@moslunch.ru" class="footer-link">info@moslunch.ru</a>
+            </p>
+            <p class="footer-address">
+                Адрес кухни и офиса: г. Москва, ул. Большая Семёновская, д. 38
+            </p>
+            <p class="footer-copyright">
+                &copy; 2026 МосЛанч. Все права защищены. Доставка горячих бизнес-ланчей по Москве.
+            </p>
+        </div>
+    </footer>
+
+    <script src="scripts/order.js"></script>
+</body>
+</html>
